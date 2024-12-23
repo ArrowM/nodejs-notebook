@@ -1,0 +1,1 @@
+export const input03 = undefined;

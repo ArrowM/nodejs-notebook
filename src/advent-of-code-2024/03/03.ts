@@ -31,6 +31,7 @@ function part2(input: string): number {
 	return result;
 }
 
+
 /** Calling **/
 
 measureExecutionTime(part1, input);

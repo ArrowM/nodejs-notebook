@@ -4,7 +4,7 @@
   "module": "src/index.ts",
   "scripts": {
     "setup": "npm ci",
-    "start": "node --loader @swc-node/register/esm --no-warnings --enable-source-maps",
+    "start": "node --loader @swc-node/register/esm --no-warnings --enable-source-maps --watch",
     "lint": "eslint src --fix"
   },
   "type": "module",

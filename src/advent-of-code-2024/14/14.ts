@@ -1,14 +1,21 @@
-/** Part 1 * */
+import {measureExecutionTime} from "../../util/exec.util.ts";
+
+let input;
+
+/** Part 1 **/
+
+function solve1(input: string) {
+
+}
 
 
-const result1 = 0;
+/** Part 2 **/
 
-console.log(result1);
+function solve2(input: string) {
 
+}
 
-/** Part 2 * */
+/** Solver **/
 
-
-const result2 = 0;
-
-console.log(result2);
+measureExecutionTime(solve1, input)
+measureExecutionTime(solve2, input)

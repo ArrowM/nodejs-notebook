@@ -1,8 +1,8 @@
-import { sum } from "lodash-es";
-import { input03 } from "./03-input.ts";
-import { measureExecutionTime } from "../../util/exec.util.ts";
+import {sum} from "lodash-es";
+import {input03} from "./03-input.ts";
+import {measureExecutionTime} from "../../util/exec.util.ts";
 
-const input = input03;
+let input = input03;
 
 /** Part 1 **/
 

@@ -1,6 +1,6 @@
-import { input01 } from "./01-input.ts";
+import {input01} from "./01-input.ts";
 
-/** Part 1 * */
+/** Part 1 **/
 
 const list1 = input01.map((item) => item[0]);
 const list2 = input01.map((item) => item[1]);
@@ -15,7 +15,7 @@ list1.forEach((val, i) => result1 += Math.abs(val - list2[i]));
 console.log(result1);
 
 
-/** Part 2 * */
+/** Part 2 **/
 
 const dict2 = {};
 

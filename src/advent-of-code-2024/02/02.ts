@@ -1,6 +1,6 @@
-import { input02 } from "./02-input.ts";
+import {input02} from "./02-input.ts";
 
-/** Part 1 * */
+/** Part 1 **/
 
 const isRowSafe = (row: number[]) => {
 	const isRowIncr = row[1] > row[0];
@@ -20,7 +20,7 @@ for (const row of input02) {
 console.log(result1);
 
 
-/** Part 2 * */
+/** Part 2 **/
 
 let result2 = 0;
 

@@ -1,18 +1,21 @@
+import {input04} from "./04-input.ts";
+import {measureExecutionTime} from "../../util/exec.util.ts";
 
-import { input04 } from "./04-input.ts";
+let input = input04;
 
-/** Part 1 * */
+function solve1(input: string) {
 
-input04
-
-const result1 = 0;
-
-console.log(result1);
+}
 
 
-/** Part 2 * */
+/** Part 2 **/
 
+function solve2(input: string) {
 
-const result2 = 0;
+}
 
-console.log(result2);
+/** Solver **/
+
+measureExecutionTime(solve1, input)
+measureExecutionTime(solve2, input)
+

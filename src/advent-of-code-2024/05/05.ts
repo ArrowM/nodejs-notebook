@@ -1,9 +1,5 @@
-
-import { input04 } from "./04-input.ts";
-
 /** Part 1 * */
 
-input04
 
 const result1 = 0;
 

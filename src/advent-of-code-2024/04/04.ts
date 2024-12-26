@@ -1,7 +1,7 @@
-import { input04 } from "./04-input.ts";
 import { measureExecutionTime } from "../../util/exec.util.ts";
+import { input04 } from "./04-input.ts";
 
-let input = input04.split("\n");
+const input = input04.split("\n");
 
 /** Part 1 **/
 
@@ -72,8 +72,8 @@ function solve2(input: string[]) {
 
 	for (let x = 0; x < width - 2; x++) {
 		for (let y = 0; y < height - 2; y++) {
-			let line1 = input[y][x] + input[y + 1][x + 1] + input[y + 2][x + 2];
-			let line2 = input[y][x + 2] + input[y + 1][x + 1] + input[y + 2][x];
+			const line1 = input[y][x] + input[y + 1][x + 1] + input[y + 2][x + 2];
+			const line2 = input[y][x + 2] + input[y + 1][x + 1] + input[y + 2][x];
 			if ([line1, line2].every(line => /MAS|SAM/.test(line))) {
 				result += 1;
 			}

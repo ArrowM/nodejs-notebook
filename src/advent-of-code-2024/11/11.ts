@@ -1,4 +1,4 @@
-import {measureExecutionTime} from "../../util/exec.util.ts";
+import { measureExecutionTime } from "../../util/exec.util.ts";
 
 let input;
 
@@ -17,5 +17,5 @@ function solve2(input: string) {
 
 /** Solver **/
 
-measureExecutionTime(solve1, input)
-measureExecutionTime(solve2, input)
+measureExecutionTime(solve1, input);
+measureExecutionTime(solve2, input);

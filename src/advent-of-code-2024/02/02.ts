@@ -1,4 +1,4 @@
-import {input02} from "./02-input.ts";
+import { input02 } from "./02-input.ts";
 
 /** Part 1 **/
 

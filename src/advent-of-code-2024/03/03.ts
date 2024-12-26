@@ -1,12 +1,13 @@
-import {sum} from "lodash-es";
-import {input03} from "./03-input.ts";
-import {measureExecutionTime} from "../../util/exec.util.ts";
+import { sum } from "lodash-es";
 
-let input = input03;
+import { measureExecutionTime } from "../../util/exec.util.ts";
+import { input03 } from "./03-input.ts";
+
+const input = input03;
 
 /** Part 1 **/
 
-function part1(input: string): number {
+function solve1(input: string): number {
 	const matches = [...input.matchAll(/mul\((\d{1,3})\s*,\s*(\d{1,3})\)/gm)];
 	const mults = matches.map(([_, num1, num2]) => parseInt(num1) * parseInt(num2));
 	return sum(mults);
@@ -14,7 +15,7 @@ function part1(input: string): number {
 
 /** Part 2 **/
 
-function part2(input: string): number {
+function solve2(input: string): number {
 	const matches = [...input.matchAll(/(.*?)mul\((\d{1,3})\s*,\s*(\d{1,3})\)/gm)];
 	let isDo = true;
 	let result = 0;
@@ -34,5 +35,5 @@ function part2(input: string): number {
 
 /** Calling **/
 
-measureExecutionTime(part1, input);
-measureExecutionTime(part2, input);
+measureExecutionTime(solve1, input);
+measureExecutionTime(solve2, input);

@@ -1,5 +1,5 @@
-import {input04} from "./04-input.ts";
-import {measureExecutionTime} from "../../util/exec.util.ts";
+import { input04 } from "./04-input.ts";
+import { measureExecutionTime } from "../../util/exec.util.ts";
 
 let input = input04.split("\n");
 
@@ -11,8 +11,8 @@ function solve1(input: string[]) {
 	let result = 0;
 
 	function countXmas(line: string) {
-		result += line.match(/XMAS/g)?.length ?? 0;
-		result += line.match(/SAMX/g)?.length ?? 0;
+		if (/XMAS/g.test(line)) result++;
+		if (/SAMX/g.test(line)) result++;
 	}
 
 	// N
@@ -25,9 +25,7 @@ function solve1(input: string[]) {
 	}
 
 	// E
-	for (const line of input) {
-		countXmas(line);
-	}
+	input.forEach(countXmas);
 
 	// NE
 	for (let y1 = 0; y1 < height; y1++) {
@@ -76,11 +74,7 @@ function solve2(input: string[]) {
 		for (let y = 0; y < height - 2; y++) {
 			let line1 = input[y][x] + input[y + 1][x + 1] + input[y + 2][x + 2];
 			let line2 = input[y][x + 2] + input[y + 1][x + 1] + input[y + 2][x];
-
-			if (
-				(line1 === "MAS" && line2 === "MAS") ||
-				(line1 === "SAM" && line2 === "SAM")
-			) {
+			if ([line1, line2].every(line => /MAS|SAM/.test(line))) {
 				result += 1;
 			}
 		}
@@ -89,17 +83,7 @@ function solve2(input: string[]) {
 	return result;
 }
 
+/** Solver  **/
 
-
-measureExecutionTime(solve2, [
-	"M.M.M",
-	".A.A.",
-	"S.S.S",
-	".A.A.",
-	"M.M.M",
-]);
-
-/** Solver **/
-
-// measureExecutionTime(solve1, input)
-// measureExecutionTime(solve2, input)
+measureExecutionTime(solve1, input);
+measureExecutionTime(solve2, input);

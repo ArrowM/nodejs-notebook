@@ -1,4 +1,4 @@
-export function measureExecutionTime(fn: Function, input: any): void {
+export function measureExecutionTime(fn: Function, input?: any): void {
 	const startTime = performance.now();
 	const result = fn(input);
 	const endTime = performance.now();

@@ -4,18 +4,18 @@ let input;
 
 /** Part 1 **/
 
-function solve1(input: string) {
+function solve1() {
 
 }
 
 
 /** Part 2 **/
 
-function solve2(input: string) {
+function solve2() {
 
 }
 
 /** Solver **/
 
-measureExecutionTime(solve1, input);
-measureExecutionTime(solve2, input);
+measureExecutionTime(solve1);
+measureExecutionTime(solve2);

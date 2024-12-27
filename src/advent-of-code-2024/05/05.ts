@@ -59,5 +59,5 @@ function solve2() {
 
 /** Solver **/
 
-measureExecutionTime(solve1, input);
-measureExecutionTime(solve2, input);
+measureExecutionTime(solve1);
+measureExecutionTime(solve2);

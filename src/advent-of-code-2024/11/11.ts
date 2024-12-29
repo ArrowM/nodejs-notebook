@@ -1,6 +1,8 @@
 import { measureExecutionTime } from "../../util/exec.util.ts";
+import { input11Ex } from "./11-input.ts";
 
-let input;
+let input = input11Ex;
+const DEBUG = true;
 
 /** Part 1 **/
 

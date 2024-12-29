@@ -2,7 +2,7 @@ import { measureExecutionTime, type Point } from "../../util/exec.util.ts";
 import { input10 } from "./10-input.ts";
 
 let input = input10;
-let DEBUG = false;
+let DEBUG = true;
 
 /** Part 1 **/
 // count trail heads in reach

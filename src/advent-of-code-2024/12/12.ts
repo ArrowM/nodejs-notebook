@@ -13,15 +13,14 @@ function printMatrix(matrix: any[][]) {
 }
 
 function solve() {
-	let nextRegionId = 0;
-	let regionIdMatrix: number[][] = Array.from({ length: input.length }, () => Array(input[0].length).fill(null));
 	let perimeterCost = 0;
 	let sideCost = 0;
+	let nextRegionId = 0;
+	let regionIdMatrix: number[][] = Array.from({ length: input.length }, () => Array(input[0].length).fill(null));
 
 	input.forEach((row, y) => {
 		row.split("").forEach((crop, x) => {
 			if (regionIdMatrix[y][x] !== null) return;
-
 			let regionId = nextRegionId++;
 			let leftFences: Point[] = [];
 			let rightFences: Point[] = [];
@@ -31,18 +30,15 @@ function solve() {
 
 			function exploreRegion({ x, y }) {
 				if (regionIdMatrix[y][x] !== null) return;
-
 				const pointsToExplore = [];
 				const leftPnt = { x: x - 1, y };
 				const rightPnt = { x: x + 1, y };
 				const topPnt = { x, y: y - 1 };
 				const botPnt = { x, y: y + 1 };
-
 				(input[leftPnt.y]?.[leftPnt.x] === crop ? pointsToExplore : leftFences).push(leftPnt);
 				(input[rightPnt.y]?.[rightPnt.x] === crop ? pointsToExplore : rightFences).push(rightPnt);
 				(input[topPnt.y]?.[topPnt.x] === crop ? pointsToExplore : topFences).push(topPnt);
 				(input[botPnt.y]?.[botPnt.x] === crop ? pointsToExplore : botFences).push(botPnt);
-
 				area += 1;
 				regionIdMatrix[y][x] = regionId;
 				pointsToExplore.filter(pnt => pnt).forEach((pnt) => exploreRegion(pnt));
@@ -52,10 +48,10 @@ function solve() {
 
 			/** part 1 - perimeter **/
 			const perimeter = leftFences.length + rightFences.length + topFences.length + botFences.length;
+			perimeterCost += perimeter * area;
 
 			/** part 2 - sides **/
 			let sides = 0;
-
 			function countVerticalSides(verticalFences: Point[]) {
 				// sort into columns
 				verticalFences.sort((a, b) => a.x === b.x ? a.y - b.y : a.x - b.x);
@@ -66,7 +62,6 @@ function solve() {
 					sides += isContinuationOfSide ? 0 : 1;
 				});
 			}
-
 			function countHorizontalSides(horizontalSides: Point[]) {
 				// sort into rows
 				horizontalSides.sort((a, b) => a.y === b.y ? a.x - b.x : a.y - b.y);
@@ -77,13 +72,10 @@ function solve() {
 					sides += isContinuationOfSide ? 0 : 1;
 				});
 			}
-
 			countVerticalSides(leftFences);
 			countVerticalSides(rightFences);
 			countHorizontalSides(topFences);
 			countHorizontalSides(botFences);
-
-			perimeterCost += perimeter * area;
 			sideCost += sides * area;
 
 			if (DEBUG) {

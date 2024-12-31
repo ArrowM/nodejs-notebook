@@ -1,8 +1,8 @@
 import { measureExecutionTime, type Point } from "../../util/exec.util.ts";
-import { input12 } from "./12-input.ts";
+import { input12Ex } from "./12-input.ts";
 
-const DEBUG = false;
-const input = input12;
+const DEBUG = true;
+const input = input12Ex;
 
 
 /** Part 1 **/

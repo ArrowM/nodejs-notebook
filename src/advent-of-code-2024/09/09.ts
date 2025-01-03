@@ -1,7 +1,7 @@
 import { measureExecutionTime } from "../../util/exec.util.ts";
 import { input09Ex } from "./09-input.ts";
 
-let input = input09Ex;
+const input = input09Ex;
 
 /** Part 1 **/
 
@@ -79,7 +79,7 @@ function solve2() {
 			freeBlocks[freeIdx].length -= fileBlock.length;
 			if (fileIdx < freeBlocks.length) {
 				const adjFreeBlocks = freeBlocks.splice(fileIdx - 1, 2);
-				freeBlocks.splice(fileIdx - 1, 0, { length: adjFreeBlocks[0].length + adjFreeBlocks[1].length + fileBlock.length});
+				freeBlocks.splice(fileIdx - 1, 0, { length: adjFreeBlocks[0].length + adjFreeBlocks[1].length + fileBlock.length });
 			}
 			freeBlocks.splice(freeIdx, 0, { length: 0 });
 		}
@@ -93,7 +93,7 @@ function solve2() {
 		const fileBlock = fileBlocks[compressedIdx];
 		if (!fileBlock) break;
 		// sum file block
-		let maxPostIdx = expandedIdx + fileBlock.length;
+		const maxPostIdx = expandedIdx + fileBlock.length;
 		for (; expandedIdx < maxPostIdx; expandedIdx++) {
 			// process.stdout.write(fileBlock.id.toString());
 			result += fileBlock.id * expandedIdx;

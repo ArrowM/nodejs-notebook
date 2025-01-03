@@ -1,4 +1,4 @@
-export const input13Ex1 = (
+export const input13Ex1 =
 	"Button A: X+94, Y+34\n" +
 	"Button B: X+22, Y+67\n" +
 	"Prize: X=8400, Y=5400\n" +
@@ -14,9 +14,9 @@ export const input13Ex1 = (
 	"Button A: X+69, Y+23\n" +
 	"Button B: X+27, Y+71\n" +
 	"Prize: X=18641, Y=10279"
-);
+;
 
-export const input13 = (
+export const input13 =
 	"Button A: X+53, Y+35\n" +
 	"Button B: X+11, Y+23\n" +
 	"Prize: X=13386, Y=18840\n" +
@@ -1296,4 +1296,4 @@ export const input13 = (
 	"Button A: X+69, Y+48\n" +
 	"Button B: X+41, Y+88\n" +
 	"Prize: X=5242, Y=3944"
-);
+;

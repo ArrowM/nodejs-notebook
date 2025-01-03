@@ -1,4 +1,6 @@
-import { measureExecutionTime, type Point } from "../../util/exec.util.ts";
+import { measureExecutionTime } from "../../util/exec.util.ts";
+import type { Point } from "../../util/math.util.ts";
+import { printMatrix } from "../../util/string.utils.ts";
 import { input12Ex } from "./12-input.ts";
 
 const DEBUG = true;
@@ -7,30 +9,25 @@ const input = input12Ex;
 
 /** Part 1 **/
 
-function printMatrix(matrix: any[][]) {
-	let longestItem = Math.max(...matrix.flat().map(item => item?.toString().length ?? 0));
-	matrix.forEach(row => console.log(row.map(item => (item ?? " ").toString().padEnd(longestItem)).join(" ")));
-}
-
 function solve() {
 	let perimeterCost = 0;
 	let sideCost = 0;
 	let nextRegionId = 0;
-	let regionIdMatrix: number[][] = Array.from({ length: input.length }, () => Array(input[0].length).fill(null));
+	const regionIdMatrix: number[][] = Array.from({ length: input.length }, () => Array(input[0].length).fill(null));
 
 	input.forEach((row, y) => {
 		row.split("").forEach((crop, x) => {
 			if (regionIdMatrix[y][x] !== null) return;
-			let regionId = nextRegionId++;
-			let leftFences: Point[] = [];
-			let rightFences: Point[] = [];
-			let topFences: Point[] = [];
-			let botFences: Point[] = [];
+			const regionId = nextRegionId++;
+			const leftFences: Point[] = [];
+			const rightFences: Point[] = [];
+			const topFences: Point[] = [];
+			const botFences: Point[] = [];
 			let area = 0;
 
-			function exploreRegion({ x, y }) {
+			function exploreRegion({ x, y }: Point) {
 				if (regionIdMatrix[y][x] !== null) return;
-				const pointsToExplore = [];
+				const pointsToExplore: Point[] = [];
 				const leftPnt = { x: x - 1, y };
 				const rightPnt = { x: x + 1, y };
 				const topPnt = { x, y: y - 1 };
@@ -88,7 +85,7 @@ function solve() {
 				console.log(sides * area, "sideCost");
 				console.log("map after adding region:");
 				console.log("-".repeat(24));
-				printMatrix(regionIdMatrix);
+				printMatrix(regionIdMatrix, " ");
 				console.log("=".repeat(24));
 				console.log("\n");
 			}

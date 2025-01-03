@@ -2,7 +2,7 @@ import { measureExecutionTime } from "../../util/exec.util.ts";
 import { input13 } from "./13-input.ts";
 
 const DEBUG = false;
-let input = input13;
+const input = input13;
 
 function solve(offset = 0) {
 	let result = 0;
@@ -10,17 +10,17 @@ function solve(offset = 0) {
 		.map(g => g.match(/\d+/g).map((n, i) => Number(n) + (i > 3 ? offset : 0)))
 		.forEach((machine, idx) => {
 			if (DEBUG) console.log("\nsolving machine", idx);
-			let [vecAx, vecAy, vecBx, vecBy, pntX, pntY] = machine;
+			const [vecAx, vecAy, vecBx, vecBy, pntX, pntY] = machine;
 
-			let numX = pntX * vecBy - pntY * vecBx;
-			let denomX = vecAx * vecBy - vecAy * vecBx;
+			const numX = pntX * vecBy - pntY * vecBx;
+			const denomX = vecAx * vecBy - vecAy * vecBx;
 
-			let numY = pntX * vecAy - pntY * vecAx;
-			let denomY = vecAy * vecBx - vecAx * vecBy;
+			const numY = pntX * vecAy - pntY * vecAx;
+			const denomY = vecAy * vecBx - vecAx * vecBy;
 
 			if (numX % denomX == 0 && numY % denomY == 0) {
-				let a = numX / denomX;
-				let b = numY / denomY;
+				const a = numX / denomX;
+				const b = numY / denomY;
 				if (DEBUG) console.log("a", a, "b", b);
 				result += (3 * a) + b;
 			}

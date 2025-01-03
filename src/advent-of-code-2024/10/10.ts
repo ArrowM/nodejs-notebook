@@ -1,8 +1,9 @@
-import { measureExecutionTime, type Point } from "../../util/exec.util.ts";
+import { measureExecutionTime } from "../../util/exec.util.ts";
+import type { Point } from "../../util/math.util.ts";
 import { input10 } from "./10-input.ts";
 
-let input = input10;
-let DEBUG = true;
+const input = input10;
+const DEBUG = true;
 
 /** Part 1 **/
 // count trail heads in reach

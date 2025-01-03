@@ -4,11 +4,13 @@ let input;
 
 /** Part 1 **/
 
-function solve1() {}
+function solve1() {
+}
 
 /** Part 2 **/
 
 function solve2() {}
+
 
 /** Solver **/
 

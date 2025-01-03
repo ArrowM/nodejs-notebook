@@ -1,7 +1,7 @@
 import { measureExecutionTime } from "../../util/exec.util.ts";
 import { input07 } from "./07-input.ts";
 
-let input = input07;
+const input = input07;
 
 /** Part 1 **/
 

@@ -1,7 +1,7 @@
 import { measureExecutionTime } from "../../util/exec.util.ts";
 import { input11 } from "./11-input.ts";
 
-let input = input11;
+const input = input11;
 const DEBUG = false;
 
 /** Part 1 **/
@@ -29,12 +29,12 @@ function solve1(blinks = 25) {
 /** Part 2 **/
 
 function solve2(blinks = 75) {
-	let stones = input.split(" ");
+	const stones = input.split(" ");
 	const stoneToRemainingStepsToResultLenMap: { [stone: string]: { [remainingSteps: number]: number } } = {};
 
 	function getResultLen(stone: string | number, remainingSteps: number) {
 		stone = Number(stone).toString();
-		let remainingStepsToResultLenMap = stoneToRemainingStepsToResultLenMap[stone] ?? {};
+		const remainingStepsToResultLenMap = stoneToRemainingStepsToResultLenMap[stone] ?? {};
 		stoneToRemainingStepsToResultLenMap[stone] = remainingStepsToResultLenMap;
 
 		let resultLen = remainingStepsToResultLenMap[remainingSteps];
@@ -47,10 +47,10 @@ function solve2(blinks = 75) {
 		}
 		// rec cond 1
 		else if (halfLen % 1 === 0) {
-			resultLen = (
+			resultLen =
 				getResultLen(stone.slice(0, halfLen), remainingSteps - 1) +
 				getResultLen(stone.slice(halfLen), remainingSteps - 1)
-			);
+			;
 		}
 		// rec cond 2
 		else if (stone === "0") {

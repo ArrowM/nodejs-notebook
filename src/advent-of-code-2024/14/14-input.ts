@@ -1,4 +1,4 @@
-export const input14Ex = (
+export const input14Ex =
 	"p=0,4 v=3,-3\n" +
 	"p=6,3 v=-1,-3\n" +
 	"p=10,3 v=-1,2\n" +
@@ -11,9 +11,9 @@ export const input14Ex = (
 	"p=7,3 v=-1,2\n" +
 	"p=2,4 v=2,-3\n" +
 	"p=9,5 v=-3,-3"
-);
+;
 
-export const input14 = (
+export const input14 =
 	"p=39,7 v=77,-20\n" +
 	"p=56,7 v=-22,29\n" +
 	"p=43,3 v=27,49\n" +
@@ -514,4 +514,4 @@ export const input14 = (
 	"p=63,87 v=17,1\n" +
 	"p=90,79 v=64,87\n" +
 	"p=66,30 v=-56,-31"
-);
+;

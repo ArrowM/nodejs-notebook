@@ -1,20 +1,20 @@
 import { measureExecutionTime } from "../../util/exec.util.ts";
 import { input06 } from "./06-input.ts";
 
-let INPUT = input06;
-let HEIGHT = INPUT.length;
-let WIDTH = INPUT[0].length;
+const input = input06;
+const height = input.length;
+const width = input[0].length;
 
 const DIRECTIONS = [
 	{ x: 0, y: -1 }, // N
-	{ x: 1, y: 0 },  // E
-	{ x: 0, y: 1 },  // S
+	{ x: 1, y: 0 }, // E
+	{ x: 0, y: 1 }, // S
 	{ x: -1, y: 0 }, // W
 ];
 
 const START = (() => {
-	for (let y = 0; y < HEIGHT; y++) {
-		const x = INPUT[y].indexOf("^");
+	for (let y = 0; y < height; y++) {
+		const x = input[y].indexOf("^");
 		if (x !== -1) return { x, y };
 	}
 })();
@@ -23,7 +23,7 @@ const START = (() => {
 /** Part 1 **/
 
 function solve1() {
-	let map = INPUT.map(row => row.split(""));
+	const map = input.map(row => row.split(""));
 	let activeDirIdx = 0;
 	let pos = { ...START };
 
@@ -58,11 +58,11 @@ function solve2() {
 	const getTile = (map, { x, y }) => map[y]?.[x];
 	const setTile = (map, { x, y }, char) => map[y][x] = char;
 
-	for (let x = 0; x < WIDTH; x++) {
-		for (let y = 0; y < HEIGHT; y++) {
+	for (let x = 0; x < width; x++) {
+		for (let y = 0; y < height; y++) {
 			if (x === START.x && y === START.y) continue;
 
-			let map = INPUT.map(row => row.split(""));
+			const map = input.map(row => row.split(""));
 			let activeDirIdx = 0;
 			let pos = { ...START };
 
@@ -76,10 +76,12 @@ function solve2() {
 				if (!nextTile) break;
 				if (nextTile === "#") {
 					activeDirIdx = (activeDirIdx + 1) % DIRECTIONS.length;
-				} else if (nextTile === activeDirIdx.toString()) {
+				}
+				else if (nextTile === activeDirIdx.toString()) {
 					result++;
 					break;
-				} else {
+				}
+				else {
 					pos = nextPos;
 					setTile(map, pos, activeDirIdx.toString());
 				}

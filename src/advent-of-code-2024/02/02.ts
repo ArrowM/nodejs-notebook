@@ -7,7 +7,7 @@ const isRowSafe = (row: number[]) => {
 	return row.every((num, idx) => {
 		if (idx === 0) return true;
 		const diff = num - row[idx - 1];
-		return (Math.abs(diff) >= 1 && Math.abs(diff) <= 3 && (diff > 0 == isRowIncr));
+		return Math.abs(diff) >= 1 && Math.abs(diff) <= 3 && (diff > 0 == isRowIncr);
 	});
 };
 

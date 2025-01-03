@@ -1,8 +1,8 @@
 import { measureExecutionTime } from "../../util/exec.util.ts";
-import { input08 } from "./08-input.ts";
 import { addPoints, type Point, subtractPoints } from "../../util/math.util.ts";
+import { input08 } from "./08-input.ts";
 
-let input = input08;
+const input = input08;
 
 const height = input.length;
 const width = input[0].length;
@@ -10,7 +10,7 @@ const width = input[0].length;
 /** Part 1 **/
 
 function isPointInBounds({ x, y }: Point) {
-	return 0 <= x && x < width && 0 <= y && y < height;
+	return x >= 0 && x < width && y >= 0 && y < height;
 }
 
 function solve(findAntisFn: Function) {

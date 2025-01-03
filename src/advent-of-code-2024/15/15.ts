@@ -10,10 +10,10 @@ const input = input15;
 /** Helpers **/
 
 const directionDict: { [key: string]: Point } = {
-	"^": { x: 0, y: -1 },
-	">": { x: 1, y: 0 },
-	"v": { x: 0, y: 1 },
-	"<": { x: -1, y: 0 },
+	"^": { y: -1 },
+	">": { x: 1 },
+	"v": { y: 1 },
+	"<": { x: -1 },
 };
 
 async function logStep(map: string[][], instructions: string[], instructionIdx: number) {

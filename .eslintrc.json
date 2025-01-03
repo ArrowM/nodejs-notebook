@@ -1,7 +1,8 @@
 {
   "env": {
     "es6": true,
-    "node": true
+    "node": true,
+    "es2021": true
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -15,7 +16,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@stylistic/disable-legacy"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended"
   ],
   "root": true,
   "rules": {
@@ -23,7 +25,10 @@
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-namespace": "off",
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^ignored" }
+    ],
 
     // General JavaScript Rules
     "comma-dangle": ["error", "always-multiline"],
@@ -39,7 +44,7 @@
     "comma-style": ["error", "last"],
     "curly": ["error", "multi-line", "consistent"],
     "dot-location": ["error", "property"],
-    "indent": ["error", "tab", { "SwitchCase": 1 }],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "max-nested-callbacks": ["error", { "max": 4 }],
     "max-statements-per-line": ["error", { "max": 2 }],
     "no-case-declarations": "off",
@@ -66,17 +71,12 @@
     "spaced-comment": ["error", "always", {
       "line": {
         "markers": ["/"],
-        "exceptions": ["-", "+"]
+        "exceptions": ["-", "+", "*"]
       },
       "block": {
         "balanced": true
       }
     }],
     "yoda": ["error", "never"]
-  },
-  "overrides": [
-    {
-      "files": ["src/**/*.ts"]
-    }
-  ]
+  }
 }

@@ -1,5 +1,6 @@
-import { addPoints, measureExecutionTime, type Point, subtractPoints } from "../../util/exec.util.ts";
+import { measureExecutionTime } from "../../util/exec.util.ts";
 import { input08 } from "./08-input.ts";
+import { addPoints, type Point, subtractPoints } from "../../util/math.util.ts";
 
 let input = input08;
 

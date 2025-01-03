@@ -1,7 +1,6 @@
-import { sum } from "lodash-es";
-
 import { measureExecutionTime } from "../../util/exec.util.ts";
 import { input03 } from "./03-input.ts";
+import { sum } from "../../util/math.util.ts";
 
 const input = input03;
 

@@ -1,6 +1,7 @@
 import { measureExecutionTime } from "../../util/exec.util.ts";
+import { input16Ex } from "./16-input.ts";
 
-let input;
+let input = input16Ex;
 
 /** Part 1 **/
 

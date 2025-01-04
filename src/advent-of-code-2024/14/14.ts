@@ -39,7 +39,7 @@ interface Robot {
 }
 
 function print(robots: Robot[]) {
-	printMatrix(toMatrix(robots), ".", false);
+	printMatrix(toMatrix(robots), { emptyChar: "." });
 }
 
 function toMatrix(robots: Robot[]) {

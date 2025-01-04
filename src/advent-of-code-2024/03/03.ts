@@ -1,6 +1,6 @@
 import { measureExecutionTime } from "../../util/exec.util.ts";
-import { input03 } from "./03-input.ts";
 import { sum } from "../../util/math.util.ts";
+import { input03 } from "./03-input.ts";
 
 const input = input03;
 

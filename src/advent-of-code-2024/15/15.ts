@@ -1,5 +1,5 @@
 import { delay, measureExecutionTime } from "../../util/exec.util.ts";
-import { addPoints, type Point, pointsEqual } from "../../util/math.util.ts";
+import { addPoints, charToDir, type Point, pointsEqual } from "../../util/math.util.ts";
 import { printMatrix } from "../../util/string.utils.ts";
 import { input15 } from "./15-input.ts";
 
@@ -8,13 +8,6 @@ const MS_PER_DEBUG_FRAME = 100;
 const input = input15;
 
 /** Helpers **/
-
-const directionDict: { [key: string]: Point } = {
-	"^": { y: -1 },
-	">": { x: 1 },
-	"v": { y: 1 },
-	"<": { x: -1 },
-};
 
 async function logStep(map: string[][], instructions: string[], instructionIdx: number) {
 	if (DEBUG && MS_PER_DEBUG_FRAME) {
@@ -90,7 +83,7 @@ async function solve1() {
 
 	for (let idx = 0; idx < instructions.length; idx++) {
 		const instruction = instructions[idx];
-		const dir = directionDict[instruction];
+		const dir = charToDir(instruction);
 		push1(map, robotPos, dir);
 		await logStep(map, instructions, idx);
 	}
@@ -105,7 +98,7 @@ function getRowsToPush(map: string[][], position: Point, dir: Point) {
 	const pointsToPush: Point[][] = [[position]];
 	while (true) {
 		const prevPoints = pointsToPush[pointsToPush.length - 1];
-		const nextPoints = prevPoints
+		const nextPoints: any[] = prevPoints
 			.map(pnt => addPoints(pnt, dir))
 			.map(({ x, y }) => ({ x, y, char: map[y][x] }))
 			.filter(tile => tile.char !== ".");
@@ -165,7 +158,7 @@ async function solve2() {
 
 	for (let idx = 0; idx < instructions.length; idx++) {
 		const instruction = instructions[idx];
-		const dir = directionDict[instruction];
+		const dir = charToDir(instruction);
 		push2(map, robotPos, dir);
 		await logStep(map, instructions, idx);
 	}

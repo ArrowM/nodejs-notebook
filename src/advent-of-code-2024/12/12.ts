@@ -85,7 +85,7 @@ function solve() {
 				console.log(sides * area, "sideCost");
 				console.log("map after adding region:");
 				console.log("-".repeat(24));
-				printMatrix(regionIdMatrix, " ");
+				printMatrix(regionIdMatrix, { allowZero: true });
 				console.log("=".repeat(24));
 				console.log("\n");
 			}

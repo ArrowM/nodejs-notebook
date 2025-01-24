@@ -3,14 +3,14 @@ import {
 	addPoints,
 	atPoint,
 	dirToChar,
-	getPerpendiculars,
+	getPerpendicularVectors,
 	type Point,
 	pointsEqual,
 	smallest,
 	smallestIdx,
 	subtractPoints,
 } from "../../util/math.util.ts";
-import { Color, getMatrixString } from "../../util/string.utils.ts";
+import { Color, matrixToString } from "../../util/string.utils.ts";
 import { input16 } from "./16-input.ts";
 
 const DEBUG = false;
@@ -55,7 +55,7 @@ function discoverNextIntersection(map: string[][], fromIntersection: Intersectio
 	switch (atPoint(map, unexploredPoint)) {
 		case ".":
 		case "o":
-			isIntersection = getPerpendiculars(dir).some(perpDir =>
+			isIntersection = getPerpendicularVectors(dir).some(perpDir =>
 				[".", "o"].includes(atPoint(map, addPoints(unexploredPoint, perpDir))),
 			);
 			if (!isIntersection) {
@@ -96,7 +96,7 @@ function discoverNextIntersection(map: string[][], fromIntersection: Intersectio
 }
 
 function discoverNextIntersections(map: string[][], discoverySource: Intersection) {
-	[discoverySource.discoveryDir, ...getPerpendiculars(discoverySource.discoveryDir)].forEach(dir => {
+	[discoverySource.discoveryDir, ...getPerpendicularVectors(discoverySource.discoveryDir)].forEach(dir => {
 		const cost = discoverySource.cost + (pointsEqual(dir, discoverySource.discoveryDir) ? 0 : 1000);
 		discoverNextIntersection(map, discoverySource, discoverySource, dir, cost);
 	});
@@ -137,7 +137,7 @@ async function printMap(map: string[][], cost: number) {
 		"\x1b[32mO\x1b[0m : shortest path\n" +
 		"\n" +
 		"current cost: " + cost + "\n";
-	const mapString = getMatrixString(map, { colors });
+	const mapString = matrixToString(map, { colors });
 	console.log(clearConsole + legend + mapString);
 
 	if (MS_PER_DEBUG_FRAME) await delay(MS_PER_DEBUG_FRAME);

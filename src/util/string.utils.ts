@@ -9,7 +9,7 @@ export interface PrintColorOption {
 	strings: string[];
 }
 
-export function getMatrixString(matrix: any[][], opts?: PrintOptions) {
+export function matrixToString(matrix: any[][], opts?: PrintOptions) {
 	const longestItem = Math.max(...matrix.flat().map(item => item?.toString().length ?? 0));
 	const emptyChar = opts?.emptyChar ?? " ";
 	const replaceEmpty = opts?.allowZero ?
@@ -29,7 +29,7 @@ export function getMatrixString(matrix: any[][], opts?: PrintOptions) {
 }
 
 export function printMatrix(matrix: any[][], opts?: PrintOptions) {
-	console.log(getMatrixString(matrix, opts));
+	console.log(matrixToString(matrix, opts));
 }
 
 export enum Color {

@@ -27,12 +27,21 @@ export function getPerpendicularVectors<P extends Point>(p1: P) {
 	return [{ x: p1.y ?? 0, y: p1.x ?? 0 }, { x: -(p1.y ?? 0), y: -(p1.x ?? 0) }];
 }
 
-export function getAdjacentPoints<P extends Point>({ x, y }: P) {
+export function getCardinalVectors() {
 	return [
-		{ x: x + 1, y },
-		{ x: x - 1, y },
-		{ x, y: y + 1 },
-		{ x, y: y - 1 },
+		{ x: 1 },
+		{ x: -1 },
+		{ y: 1 },
+		{ y: -1 },
+	];
+}
+
+export function getAdjacentPoints<P extends Point>({ x, y }: P, distance = 1) {
+	return [
+		{ x: x + distance, y },
+		{ x: x - distance, y },
+		{ x, y: y + distance },
+		{ x, y: y - distance },
 	];
 }
 
@@ -51,7 +60,18 @@ export function smallestIdx(nums: number[]) {
 }
 
 export function atPoint<P extends Point>(matrix: any[][], { x, y }: P): string {
-	return matrix[y][x];
+	return matrix[y]?.[x];
+}
+
+export function setPoint<P extends Point>(matrix: any[][], { x, y }: P, value: any): void {
+	return matrix[y][x] = value;
+}
+
+export function findPoint(matrix: string[][], value: any) {
+	for (let y = 0; y < matrix.length; y++) {
+		const x = matrix[y].indexOf(value);
+		if (x !== -1) return { x, y };
+	}
 }
 
 export function charToDir(char: string): Point {

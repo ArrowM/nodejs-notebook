@@ -5,8 +5,6 @@ import { addPoints, atPoint, findPoint, type Point, subtractPoints } from "../..
 // const input = input21Ex1;
 const input = input21;
 
-const DEBUG = false;
-
 const numPad = [
 	["7", "8", "9"],
 	["4", "5", "6"],
@@ -100,17 +98,6 @@ function solve(numBots: number) {
 			.map(pathOptions => findShortestFinalLen(pathOptions, numBots))
 			.reduce((tot, len) => tot + len, 0);
 		result += shortestLength * Number(path.match(/\d+/));
-
-		if (DEBUG) {
-			console.log(
-				shortestLength,
-				"*",
-				Number(path.match(/\d+/)),
-				"=",
-				shortestLength * Number(path.match(/\d+/)),
-				"\n",
-			);
-		}
 	}
 
 	return result;

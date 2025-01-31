@@ -4,10 +4,9 @@ import {
 	atPoint,
 	dirToChar,
 	getPerpendicularVectors,
+	minIdx,
 	type Point,
 	pointsEqual,
-	smallest,
-	smallestIdx,
 	subtractPoints,
 } from "../../util/math.util.ts";
 import { Color, matrixToString } from "../../util/string.utils.ts";
@@ -168,7 +167,7 @@ async function solve() {
 	unexploredIntersections.push(...knownIntersections);
 
 	while (unexploredIntersections.length) {
-		const cheapestIdx = smallestIdx(unexploredIntersections.map(({ cost }) => cost));
+		const cheapestIdx = minIdx(unexploredIntersections.map(({ cost }) => cost));
 		const [explorationSource] = unexploredIntersections.splice(cheapestIdx, 1);
 		const isAtEnd = pointsEqual(explorationSource, end);
 
@@ -179,7 +178,7 @@ async function solve() {
 
 
 	const endIntersections = knownIntersections.filter(inter => pointsEqual(inter, end));
-	const lowestCost = smallest(endIntersections.map(e => e.cost));
+	const lowestCost = Math.min(...endIntersections.map(e => e.cost));
 	const cheapestEnds = endIntersections.filter(e => e.cost == lowestCost);
 	cheapestEnds.forEach(cheapest => drawPathsTo(map, cheapest, { char: "O" }));
 	await printMap(map, lowestCost);

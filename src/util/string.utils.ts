@@ -28,6 +28,13 @@ export function matrixToString(matrix: any[][], opts?: PrintOptions) {
 	}).join(" ")).join("\n");
 }
 
+export function getPermutations(str: string): string[] {
+	if (str.length <= 1) return [str];
+	return str.split('').flatMap((char, i) =>
+		getPermutations(str.slice(0, i) + str.slice(i + 1)).map(perm => char + perm)
+	);
+}
+
 export function printMatrix(matrix: any[][], opts?: PrintOptions) {
 	console.log(matrixToString(matrix, opts));
 }

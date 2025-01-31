@@ -27,15 +27,6 @@ export function getPerpendicularVectors<P extends Point>(p1: P) {
 	return [{ x: p1.y ?? 0, y: p1.x ?? 0 }, { x: -(p1.y ?? 0), y: -(p1.x ?? 0) }];
 }
 
-export function getCardinalVectors() {
-	return [
-		{ x: 1 },
-		{ x: -1 },
-		{ y: 1 },
-		{ y: -1 },
-	];
-}
-
 export function getAdjacentPoints<P extends Point>({ x, y }: P, distance = 1) {
 	return [
 		{ x: x + distance, y },
@@ -51,12 +42,8 @@ export function distanceBetween<P extends Point, Q extends Point>(p1: P, p2: Q) 
 	return Math.pow(aSq + bSq, 0.5);
 }
 
-export function smallest(nums: number[]) {
-	return nums.length ? nums.reduce<number>((smallest, num) => Math.min(smallest, num), Number.MAX_SAFE_INTEGER) : undefined;
-}
-
-export function smallestIdx(nums: number[]) {
-	return nums.indexOf(smallest(nums));
+export function minIdx(nums: number[]) {
+	return nums.indexOf(Math.min(...nums));
 }
 
 export function atPoint<P extends Point>(matrix: any[][], { x, y }: P): string {
@@ -67,11 +54,23 @@ export function setPoint<P extends Point>(matrix: any[][], { x, y }: P, value: a
 	return matrix[y][x] = value;
 }
 
-export function findPoint(matrix: string[][], value: any) {
+export function findPoint(matrix: any[][], value: any) {
 	for (let y = 0; y < matrix.length; y++) {
 		const x = matrix[y].indexOf(value);
 		if (x !== -1) return { x, y };
 	}
+}
+
+export function pointsBetween<P extends Point, Q extends Point>(p1: P, p2: Q) {
+	const points = [];
+	const xMin = Math.min(p1.x, p2.x), xMax = Math.max(p1.x, p2.x);
+	const yMin = Math.min(p1.y, p2.y), yMax = Math.max(p1.y, p2.y);
+	for (let y = yMin; y <= yMax; y++) {
+		for (let x = xMin; x <= xMax; x++) {
+			points.push({x, y});
+		}
+	}
+	return points;
 }
 
 export function charToDir(char: string): Point {

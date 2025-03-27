@@ -67,7 +67,7 @@ export function pointsBetween<P extends Point, Q extends Point>(p1: P, p2: Q) {
 	const yMin = Math.min(p1.y, p2.y), yMax = Math.max(p1.y, p2.y);
 	for (let y = yMin; y <= yMax; y++) {
 		for (let x = xMin; x <= xMax; x++) {
-			points.push({x, y});
+			points.push({ x, y });
 		}
 	}
 	return points;
